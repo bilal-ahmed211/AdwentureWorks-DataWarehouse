@@ -1,0 +1,102 @@
+ 
+.sessions 2;
+ERRLIMIT 40;
+.LOGON 192.168.235.130 /DBC,DBC;
+DATABASE DP_STG1;
+.set record vartext ",";
+
+
+DROP TABLE WorkOrderRouting_Production;
+DROP TABLE WorkOrderRouting_Production_ERROR1;
+DROP TABLE WorkOrder_Production_ERROR2; 
+
+CREATE SET TABLE WorkOrderRouting_Production ,NO FALLBACK ,
+     NO BEFORE JOURNAL,
+     NO AFTER JOURNAL
+	 (
+WorkOrderID	VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC,
+ProductID	VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC,
+OperationSequence	VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC,
+LocationID	VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC,
+ScheduledStartDate	VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC,
+ScheduledEndDate	VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC,
+ActualStartDate	VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC,
+ActualEndDate	VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC,
+ActualResourceHrs	VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC,
+PlannedCost	VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC,
+ActualCost	VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC,
+ModifiedDate	VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC
+
+	 )
+	PRIMARY INDEX WorkOrderRouting_Production (WorkOrderID);
+
+RECORD 2;
+
+DEFINE
+
+WorkOrderID	(VARCHAR(500))
+ProductID	(VARCHAR(500))
+OperationSequence	(VARCHAR(500))
+LocationID	(VARCHAR(500))
+ScheduledStartDate	(VARCHAR(500))
+ScheduledEndDate	(VARCHAR(500))
+ActualStartDate	(VARCHAR(500))
+ActualEndDate	(VARCHAR(500))
+ActualResourceHrs	(VARCHAR(500))
+PlannedCost	(VARCHAR(500))
+ActualCost	(VARCHAR(500))
+ModifiedDate	(VARCHAR(500))
+
+
+FILE="B:\Teaching\Work DWH AND BI\Adventure Works Data Set\Production\WorkOrderRouting_Production.CSV";
+
+begin loading
+WorkOrderRouting_Production
+errorfiles
+WorkOrderRouting_Production_ERROR1
+,WorkOrderRouting_Production_ERROR2
+
+
+CHECKPOINT 400000;
+
+insert into WorkOrderRouting_Production (
+WorkOrderID,
+ProductID,
+OperationSequence,
+LocationID,
+ScheduledStartDate,
+ScheduledEndDate,
+ActualStartDate,
+ActualEndDate,
+ActualResourceHrs,
+PlannedCost,
+ActualCost,
+ModifiedDate
+
+
+
+)
+
+values
+
+(
+:WorkOrderID,
+:ProductID,
+:OperationSequence,
+:LocationID,
+:ScheduledStartDate,
+:ScheduledEndDate,
+:ActualStartDate,
+:ActualEndDate,
+:ActualResourceHrs,
+:PlannedCost,
+:ActualCost,
+:ModifiedDate
+
+
+);
+
+
+end loading;
+
+.LOGOFF; 

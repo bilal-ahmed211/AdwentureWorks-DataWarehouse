@@ -1,0 +1,349 @@
+ 
+.sessions 2;
+ERRLIMIT 40;
+.LOGON 192.168.235.130 /DBC,DBC;
+DATABASE DP_STG1;
+.set record vartext ",";
+
+
+DROP TABLE Purchase;
+DROP TABLE Purchase_ERROR1;
+DROP TABLE Purchase_ERROR2; 
+
+CREATE SET TABLE Purchase ,NO FALLBACK ,
+     NO BEFORE JOURNAL,
+     NO AFTER JOURNAL
+(
+	 
+PurchaseOrderID1	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+PurchaseOrderDetailID	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+DueDate	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+OrderQty	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+ProductID1	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+UnitPrice	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+LineTotal	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+ReceivedQty	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+RejectedQty	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+StockedQty	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+ModifiedDate1	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+PurchaseOrderID2	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+RevisionNumber	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+Status	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+EmployeeID	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+VendorID	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+ShipMethodID1	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+OrderDate	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+ShipDate	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+SubTotal	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+TaxAmt	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+Freight	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+TotalDue	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+ModifiedDate2	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+BusinessEntityID1	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+AccountNumber	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+Name1	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+CreditRating	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+PreferredVendorStatus	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+ActiveFlag	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+PurchasingWebServiceURL	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+ModifiedDate3	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+ShipMethodID2	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+Name2	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+ShipBase	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+ShipRate	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+rowguid1	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+ModifiedDate4	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+ProductID2	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+BusinessEntityID2	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+AverageLeadTime	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+StandardPrice	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+LastReceiptCost	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+LastReceiptDate	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+MinOrderQty	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+MaxOrderQty	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+OnOrderQty	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+UnitMeasureCode	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+ModifiedDate5	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+ProductID3	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+Name3	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+ProductNumber	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+MakeFlag	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+FinishedGoodsFlag	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+Color	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+SafetyStockLevel	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+ReorderPoint	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+StandardCost	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+ListPrice	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+Size	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+SizeUnitMeasureCode	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+WeightUnitMeasureCode	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+Weight	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+DaysToManufacture	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+ProductLine	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+Class1	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+Style	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+ProductSubcategoryID	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+ProductModelID	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+SellStartDate	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+SellEndDate	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+DiscontinuedDate	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+rowguid2	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC ,
+ModifiedDate6	 VARCHAR(500) CHARACTER SET LATIN NOT CASESPECIFIC
+
+
+	 )
+	PRIMARY INDEX Purchase (BusinessEntityID1);
+
+RECORD 2;
+
+DEFINE
+
+PurchaseOrderID1	(VARCHAR(500))
+PurchaseOrderDetailID	(VARCHAR(500))
+DueDate	(VARCHAR(500))
+OrderQty	(VARCHAR(500))
+ProductID1	(VARCHAR(500))
+UnitPrice	(VARCHAR(500))
+LineTotal	(VARCHAR(500))
+ReceivedQty	(VARCHAR(500))
+RejectedQty	(VARCHAR(500))
+StockedQty	(VARCHAR(500))
+ModifiedDate1	(VARCHAR(500))
+PurchaseOrderID2	(VARCHAR(500))
+RevisionNumber	(VARCHAR(500))
+Status	(VARCHAR(500))
+EmployeeID	(VARCHAR(500))
+VendorID	(VARCHAR(500))
+ShipMethodID1	(VARCHAR(500))
+OrderDate	(VARCHAR(500))
+ShipDate	(VARCHAR(500))
+SubTotal	(VARCHAR(500))
+TaxAmt	(VARCHAR(500))
+Freight	(VARCHAR(500))
+TotalDue	(VARCHAR(500))
+ModifiedDate2	(VARCHAR(500))
+BusinessEntityID1	(VARCHAR(500))
+AccountNumber	(VARCHAR(500))
+Name1	(VARCHAR(500))
+CreditRating	(VARCHAR(500))
+PreferredVendorStatus	(VARCHAR(500))
+ActiveFlag	(VARCHAR(500))
+PurchasingWebServiceURL	(VARCHAR(500))
+ModifiedDate3	(VARCHAR(500))
+ShipMethodID2	(VARCHAR(500))
+Name2	(VARCHAR(500))
+ShipBase	(VARCHAR(500))
+ShipRate	(VARCHAR(500))
+rowguid1	(VARCHAR(500))
+ModifiedDate4	(VARCHAR(500))
+ProductID2	(VARCHAR(500))
+BusinessEntityID2	(VARCHAR(500))
+AverageLeadTime	(VARCHAR(500))
+StandardPrice	(VARCHAR(500))
+LastReceiptCost	(VARCHAR(500))
+LastReceiptDate	(VARCHAR(500))
+MinOrderQty	(VARCHAR(500))
+MaxOrderQty	(VARCHAR(500))
+OnOrderQty	(VARCHAR(500))
+UnitMeasureCode	(VARCHAR(500))
+ModifiedDate5	(VARCHAR(500))
+ProductID3	(VARCHAR(500))
+Name3	(VARCHAR(500))
+ProductNumber	(VARCHAR(500))
+MakeFlag	(VARCHAR(500))
+FinishedGoodsFlag	(VARCHAR(500))
+Color	(VARCHAR(500))
+SafetyStockLevel	(VARCHAR(500))
+ReorderPoint	(VARCHAR(500))
+StandardCost	(VARCHAR(500))
+ListPrice	(VARCHAR(500))
+Size	(VARCHAR(500))
+SizeUnitMeasureCode	(VARCHAR(500))
+WeightUnitMeasureCode	(VARCHAR(500))
+Weight	(VARCHAR(500))
+DaysToManufacture	(VARCHAR(500))
+ProductLine	(VARCHAR(500))
+Class1	(VARCHAR(500))
+Style	(VARCHAR(500))
+ProductSubcategoryID	(VARCHAR(500))
+ProductModelID	(VARCHAR(500))
+SellStartDate	(VARCHAR(500))
+SellEndDate	(VARCHAR(500))
+DiscontinuedDate	(VARCHAR(500))
+rowguid2	(VARCHAR(500))
+ModifiedDate6	(VARCHAR(500))
+
+
+FILE="B:\Teaching\Work DWH AND BI\Adventure Works Data Set\Purchase\Purchase.CSV";
+
+begin loading
+Purchase
+errorfiles
+Purchase_ERROR1
+,Purchase_ERROR2
+
+
+CHECKPOINT 400000;
+
+insert into Purchase (
+PurchaseOrderID1,
+PurchaseOrderDetailID,
+DueDate,
+OrderQty,
+ProductID1,
+UnitPrice,
+LineTotal,
+ReceivedQty,
+RejectedQty,
+StockedQty,
+ModifiedDate1,
+PurchaseOrderID2,
+RevisionNumber,
+Status,
+EmployeeID,
+VendorID,
+ShipMethodID1,
+OrderDate,
+ShipDate,
+SubTotal,
+TaxAmt,
+Freight,
+TotalDue,
+ModifiedDate2,
+BusinessEntityID1,
+AccountNumber,
+Name1,
+CreditRating,
+PreferredVendorStatus,
+ActiveFlag,
+PurchasingWebServiceURL,
+ModifiedDate3,
+ShipMethodID2,
+Name2,
+ShipBase,
+ShipRate,
+rowguid1,
+ModifiedDate4,
+ProductID2,
+BusinessEntityID2,
+AverageLeadTime,
+StandardPrice,
+LastReceiptCost,
+LastReceiptDate,
+MinOrderQty,
+MaxOrderQty,
+OnOrderQty,
+UnitMeasureCode,
+ModifiedDate5,
+ProductID3,
+Name3,
+ProductNumber,
+MakeFlag,
+FinishedGoodsFlag,
+Color,
+SafetyStockLevel,
+ReorderPoint,
+StandardCost,
+ListPrice,
+Size,
+SizeUnitMeasureCode,
+WeightUnitMeasureCode,
+Weight,
+DaysToManufacture,
+ProductLine,
+Class1,
+Style,
+ProductSubcategoryID,
+ProductModelID,
+SellStartDate,
+SellEndDate,
+DiscontinuedDate,
+rowguid2,
+ModifiedDate6
+
+)
+
+values
+
+(
+:PurchaseOrderID1,
+:PurchaseOrderDetailID,
+:DueDate,
+:OrderQty,
+:ProductID1,
+:UnitPrice,
+:LineTotal,
+:ReceivedQty,
+:RejectedQty,
+:StockedQty,
+:ModifiedDate1,
+:PurchaseOrderID2,
+:RevisionNumber,
+:Status,
+:EmployeeID,
+:VendorID,
+:ShipMethodID1,
+:OrderDate,
+:ShipDate,
+:SubTotal,
+:TaxAmt,
+:Freight,
+:TotalDue,
+:ModifiedDate2,
+:BusinessEntityID1,
+:AccountNumber,
+:Name1,
+:CreditRating,
+:PreferredVendorStatus,
+:ActiveFlag,
+:PurchasingWebServiceURL,
+:ModifiedDate3,
+:ShipMethodID2,
+:Name2,
+:ShipBase,
+:ShipRate,
+:rowguid1,
+:ModifiedDate4,
+:ProductID2,
+:BusinessEntityID2,
+:AverageLeadTime,
+:StandardPrice,
+:LastReceiptCost,
+:LastReceiptDate,
+:MinOrderQty,
+:MaxOrderQty,
+:OnOrderQty,
+:UnitMeasureCode,
+:ModifiedDate5,
+:ProductID3,
+:Name3,
+:ProductNumber,
+:MakeFlag,
+:FinishedGoodsFlag,
+:Color,
+:SafetyStockLevel,
+:ReorderPoint,
+:StandardCost,
+:ListPrice,
+:Size,
+:SizeUnitMeasureCode,
+:WeightUnitMeasureCode,
+:Weight,
+:DaysToManufacture,
+:ProductLine,
+:Class1,
+:Style,
+:ProductSubcategoryID,
+:ProductModelID,
+:SellStartDate,
+:SellEndDate,
+:DiscontinuedDate,
+:rowguid2,
+:ModifiedDate6
+
+);
+
+
+end loading;
+
+.LOGOFF; 
